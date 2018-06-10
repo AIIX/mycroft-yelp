@@ -16,7 +16,6 @@ class YelpRestaurant(MycroftSkill):
     @intent_handler(IntentBuilder("").require("Restaurant").require("food_type"))
     def handle_find_restaurant_intent(self, message):
         api_key = self.settings.get('key')
-        print(api_key)
         zip_code = self.settings.get('zipcode')
         yelp_api = YelpAPI(api_key)
         location = self.location
@@ -30,9 +29,11 @@ class YelpRestaurant(MycroftSkill):
                                                longitude=longitude,
                                                limit='5',
                                                sort_by='best_match')
-
+        restaurant_name = search_results['businesses'][0]['name']
+        rating = search_results['businesses'][0]['rating']
         print(search_results['businesses'][0])
-        self.speak_dialog("restaurant")
+        self.speak_dialog("restaurant", data={"restaurant_name": restaurant_name,
+                                              "rating": rating})
 
 
 # The "create_skill()" method is used to create an instance of the skill.
