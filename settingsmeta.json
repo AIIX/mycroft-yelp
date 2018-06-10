@@ -1,0 +1,36 @@
+{
+  "identifier": "YelpRestaurantSkill",
+  "name": "YelpRestaurant",
+  "skillMetadata": {
+      "sections": [
+          {
+              "name": "Yelp Api",
+              "fields": [
+                  {
+                      "name": "key",
+                      "type": "text",
+                      "label": "Yelp API Key",
+                      "value": ""
+                  },
+                  {
+                      "name": "zipcode",
+                      "type": "text",
+                      "label": "zip code - optional if not supplied uses location from home setting",
+                      "value": ""
+                  }
+              ]
+          },
+          {
+              "name": "Options",
+              "fields": [
+                  {
+                      "name": "text",
+                      "type": "checkbox",
+                      "label": "Send Text Notify",
+                      "value": "false"
+                  }
+              ]
+          }
+      ]
+  }
+}
