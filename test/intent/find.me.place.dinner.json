@@ -1,4 +1,4 @@
 {
-  "utterance": "find me a place to eat dinner",
+  "utterance": "find me a place to eat sushi",
   "expected_dialog": "restaurant"
 }
