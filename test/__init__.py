@@ -35,6 +35,6 @@ json_response = {'id': 'LeHWKBOD_klTuyOOROBnRQ',
 
 def test_runner(skill, example, emitter, loader):
     s = [s for s in loader.skills if s and s.root_dir == skill]
-    s[0].yelp_api = mock.MagicMock()
+    s[0].yelp_api = MagicMock()
     s[0].yelp_api.search_query.return_value = json_response
     return SkillTest(skill, example, emitter).run(loader)
