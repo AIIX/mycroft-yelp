@@ -5,10 +5,10 @@ Finds restaurants via the Yelp API
 Finds restaurants via the Yelp API
 
 ## Examples 
-* "find sushi restaurant near me"
-* "find restaurant"
-* "find a place to eat"
-* "I need a place to eat"
+* "I need a place to eat dinner"
+* "Need a place to eat sushi"
+* "find me a place to eat sushi"
+* "find me a place to eat dinner"
 
 ## Credits 
 btotharye
