@@ -32,8 +32,9 @@ class YelpRestaurant(MycroftSkill):
         restaurant_name = search_results['businesses'][0]['name']
         rating = search_results['businesses'][0]['rating']
         print(search_results['businesses'][0])
-        self.speak_dialog("restaurant", data={"restaurant_name": restaurant_name,
-                                              "rating": rating})
+        self.speak_dialog("restaurant", data={
+                          "restaurant_name": restaurant_name,
+                          "rating": rating})
 
 
 # The "create_skill()" method is used to create an instance of the skill.
