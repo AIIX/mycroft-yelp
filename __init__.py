@@ -4,8 +4,6 @@ from mycroft.util.log import LOG
 from yelpapi import YelpAPI
 
 
-
-
 class YelpRestaurant(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
