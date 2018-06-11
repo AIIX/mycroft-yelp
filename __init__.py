@@ -11,7 +11,9 @@ class YelpRestaurant(MycroftSkill):
         super(YelpRestaurant, self).__init__(name="YelpRestaurant")
 
     # This handle is used to lookup a restaurant near the person's location
-    @intent_handler(IntentBuilder("").require("Restaurant").require("food_type"))
+    @intent_handler(IntentBuilder("")
+                    .require("Restaurant")
+                    .require("food_type"))
     def handle_find_restaurant_intent(self, message):
         api_key = self.settings.get('key')
         zip_code = self.settings.get('zipcode')
