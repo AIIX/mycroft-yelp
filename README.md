@@ -15,5 +15,11 @@ You will need to go to https://www.yelp.com/developers/v3/manage_app and create 
 
 The zip code is not required, if you don't put a zip code in it will use the location from the mycroft home settings.
 
+## Screenshot Example
+Here is what from the Mycroft CLI the response looks like currently, plans to have this come with all the info including the address and such as a text message using IFTTT webhooks.
+
+![yelp screenshot](https://github.com/btotharye/mycroft-yelp/blob/master/yelp_ss.png)
+
+
 ## Credits 
 btotharye
