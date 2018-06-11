@@ -41,4 +41,3 @@ class YelpRestaurant(MycroftSkill):
 # Note that it's outside the class itself.
 def create_skill():
     return YelpRestaurant()
-
