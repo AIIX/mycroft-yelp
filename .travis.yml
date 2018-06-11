@@ -8,4 +8,4 @@ python:
 script:
  - pep8 __init__.py
 after_success:
-coveralls
+  coveralls
