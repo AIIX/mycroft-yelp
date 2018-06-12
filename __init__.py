@@ -80,22 +80,43 @@ class YelpRestaurant(MycroftSkill):
         print(self.index)
         json_response = self.json_response
         print("This is the json response: {}".format(json_response))
-        try:
+        if int(self.index) <= 4:
             businesses = json_response['businesses'][int(self.index)]
-        except IndexError as e:
-            self.speak("Sorry there are no more results.")
-        restaurant_name = businesses['name']
-        restaurant_phone = businesses['phone']
-        restaurant_location = businesses['location']['display_address'][0] + \
-            " " + \
-            businesses['location']['display_address'][1]
-        if businesses['is_closed'] is True:
-            restaurant_open = 'closed'
+            restaurant_name = businesses['name']
+            restaurant_phone = businesses['phone']
+            restaurant_location = businesses['location']['display_address'][0] + \
+                                  " " + \
+                                  businesses['location']['display_address'][1]
+            if businesses['is_closed'] is True:
+                restaurant_open = 'closed'
+            else:
+                restaurant_open = 'open'
+            self.speak_dialog("next.result", data={
+                "restaurant_name": restaurant_name,
+                "rating": businesses['rating']})
         else:
-            restaurant_open = 'open'
-        self.speak_dialog("next.result", data={
-                          "restaurant_name": restaurant_name,
-                          "rating": businesses['rating']})
+            response = self.get_response('startover')
+            if response == 'yes':
+                self.index = 0
+                json_response = self.json_response
+                businesses = json_response['businesses'][int(self.index)]
+                restaurant_name = businesses['name']
+                restaurant_phone = businesses['phone']
+                restaurant_location = businesses['location']['display_address'][0] + \
+                                      " " + \
+                                      businesses['location']['display_address'][1]
+                if businesses['is_closed'] is True:
+                    restaurant_open = 'closed'
+                else:
+                    restaurant_open = 'open'
+                self.speak_dialog("restaurant", data={
+                    "restaurant_name": restaurant_name,
+                    "rating": businesses['rating']})
+            if response == 'no':
+                self.speak("Ok, thanks for using the yelp restaurant finder.")
+
+
+
 
 # The "create_skill()" method is used to create an instance of the skill.
 # Note that it's outside the class itself.
