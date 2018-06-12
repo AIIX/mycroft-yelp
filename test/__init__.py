@@ -34,5 +34,9 @@ json_response = {'businesses': [{'alias': 'sushi-iwa-clayton-clayton-2',
 def test_runner(skill, example, emitter, loader):
     s = [s for s in loader.skills if s and s.root_dir == skill]
     with patch(s[0].__module__ + '.YelpAPI.search_query') as m:
+        s[0].is_closed = json_response['businesses'][0]['is_closed']
+        s[0].restaurant_phone = json_response['businesses'][0]['phone']
+        s[0].restaurant_address = json_response['businesses'][0]['location']['display_address'][0] + \
+                              " " + json_response['businesses'][0]['location']['display_address'][1]
         m.return_value = json_response
         return SkillTest(skill, example, emitter).run(loader)
