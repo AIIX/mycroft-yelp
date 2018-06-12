@@ -53,7 +53,6 @@ class YelpRestaurant(MycroftSkill):
                     .require('RestaurantName')
                     .require('MoreInformation'))
     def handle_more_info(self, message):
-        print(message.data)
         restaurant_name = message.data.get('RestaurantName')
         restaurant_phone = self.restaurant_phone
         restaurant_location = self.restaurant_address
@@ -61,10 +60,6 @@ class YelpRestaurant(MycroftSkill):
             restaurant_open = 'closed'
         else:
             restaurant_open = 'open'
-
-        restaurant_rating = self.rating
-        print("This is the restaurant name: {}".format(restaurant_name))
-        print("This is the restaurant phone: {}".format(restaurant_phone))
         self.speak_dialog("moreinfo", data={
                           "restaurant_name": restaurant_name,
                           "phone_number": restaurant_phone,
