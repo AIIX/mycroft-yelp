@@ -61,8 +61,8 @@ class YelpRestaurant(MycroftSkill):
         restaurant_name = businesses['name']
         restaurant_phone = businesses['phone']
         restaurant_location = businesses['location']['display_address'][0] + \
-                              " " + \
-                              businesses['location']['display_address'][1]
+            " " + \
+            businesses['location']['display_address'][1]
         if businesses['is_closed'] is True:
             restaurant_open = 'closed'
         else:
@@ -85,8 +85,8 @@ class YelpRestaurant(MycroftSkill):
             restaurant_name = businesses['name']
             restaurant_phone = businesses['phone']
             restaurant_location = businesses['location']['display_address'][0] + \
-                                  " " + \
-                                  businesses['location']['display_address'][1]
+                " " + \
+                businesses['location']['display_address'][1]
             if businesses['is_closed'] is True:
                 restaurant_open = 'closed'
             else:
@@ -103,8 +103,8 @@ class YelpRestaurant(MycroftSkill):
                 restaurant_name = businesses['name']
                 restaurant_phone = businesses['phone']
                 restaurant_location = businesses['location']['display_address'][0] + \
-                                      " " + \
-                                      businesses['location']['display_address'][1]
+                    " " + \
+                    businesses['location']['display_address'][1]
                 if businesses['is_closed'] is True:
                     restaurant_open = 'closed'
                 else:
@@ -114,8 +114,6 @@ class YelpRestaurant(MycroftSkill):
                     "rating": businesses['rating']})
             if response == 'no':
                 self.speak("Ok, thanks for using the yelp restaurant finder.")
-
-
 
 
 # The "create_skill()" method is used to create an instance of the skill.
