@@ -59,7 +59,7 @@ class YelpRestaurant(MycroftSkill):
         json_response = self.json_response
         print(int(self.index))
         print(type(self.index))
-        businesses = json_response['businesses'][int(self.index)]
+        businesses = json_response['businesses'][self.index]
         restaurant_name = businesses['name']
         restaurant_phone = businesses['phone']
         restaurant_location = businesses['location']['display_address'][0] + \
@@ -83,7 +83,7 @@ class YelpRestaurant(MycroftSkill):
         json_response = self.json_response
         print("This is the json response: {}".format(json_response))
         if int(self.index) <= 4:
-            businesses = json_response['businesses'][int(self.index)]
+            businesses = json_response['businesses'][self.index]
             restaurant_name = businesses['name']
             restaurant_phone = businesses['phone']
             restaurant_location = businesses['location']['display_address'][0] + \
@@ -101,7 +101,7 @@ class YelpRestaurant(MycroftSkill):
             if response == 'yes':
                 self.index = 0
                 json_response = self.json_response
-                businesses = json_response['businesses'][int(self.index)]
+                businesses = json_response['businesses'][self.index]
                 restaurant_name = businesses['name']
                 restaurant_phone = businesses['phone']
                 restaurant_location = businesses['location']['display_address'][0] + \
