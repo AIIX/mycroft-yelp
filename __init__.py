@@ -12,7 +12,7 @@ class YelpRestaurant(MycroftSkill):
         self.restaurant_phone = ''
         self.restaurant_address = ''
         self.rating = ''
-        self.is_open = False
+        self.is_closed = False
 
     # This handle is used to lookup a restaurant near the person's location
     @intent_handler(IntentBuilder("")
@@ -24,8 +24,6 @@ class YelpRestaurant(MycroftSkill):
         yelp_api = YelpAPI(api_key)
         location = self.location
         food_type = message.data['food_type']
-        if zip_code:
-            print("The zip code is: {}".format(zip_code))
         longitude = location['coordinate']['longitude']
         latitude = location['coordinate']['latitude']
         search_results = yelp_api.search_query(term=food_type,
