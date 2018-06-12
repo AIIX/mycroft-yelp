@@ -37,7 +37,8 @@ class YelpRestaurant(MycroftSkill):
         restaurant_phone = search_results['businesses'][0]['phone']
         restaurant_rating = search_results['businesses'][0]['rating']
         restaurant_location = search_results['businesses'][0]['location']['display_address'][0] + \
-                              " " + search_results['businesses'][0]['location']['display_address'][1]
+            " " + \
+            search_results['businesses'][0]['location']['display_address'][1]
         restaurant_open = search_results['businesses'][0]['is_closed']
         self.set_context('RestaurantName', restaurant_name)
         self.restaurant_phone = restaurant_phone
@@ -77,4 +78,3 @@ class YelpRestaurant(MycroftSkill):
 # Note that it's outside the class itself.
 def create_skill():
     return YelpRestaurant()
-
