@@ -1,4 +1,4 @@
-# Yelp Restaurant Finder [![Build Status](https://travis-ci.org/btotharye/mycroft-yelp.svg?branch=master)](https://travis-ci.org/btotharye/mycroft-yelp) [![Coverage Status](https://coveralls.io/repos/github/btotharye/mycroft-yelp/badge.svg?branch=test_jenkins_coverage)](https://coveralls.io/github/btotharye/mycroft-yelp?branch=test_jenkins_coverage)
+# Yelp Restaurant Finder [![Build Status](https://travis-ci.org/btotharye/mycroft-yelp.svg?branch=master)](https://travis-ci.org/btotharye/mycroft-yelp) [![codecov](https://codecov.io/gh/btotharye/mycroft-yelp/branch/master/graph/badge.svg)](https://codecov.io/gh/btotharye/mycroft-yelp)
 Finds restaurants via the Yelp API
 
 ## Description 
