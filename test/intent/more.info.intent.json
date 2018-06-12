@@ -1,4 +1,5 @@
 {
   "utterance": "more info",
+  "set_context": {"RestaurantName": "Sushi Iwa Clayton"},
   "expected_dialog": "moreinfo"
 }
