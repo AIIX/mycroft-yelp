@@ -9,8 +9,7 @@ Finds restaurants via the Yelp API
 * "Need a place to eat sushi"
 * "find me a place to eat sushi"
 * "find me a place to eat dinner"
-
-Can also do context so once it finds the best result "more info" will give the phone number, address and if they are open
+* "more information" - Will give more information about the current restaurant using the context method
 
 ## Setting Up API Token
 You will need to go to https://www.yelp.com/developers/v3/manage_app and create a app which will then give you a api token you will put into the home.mycroft.ai settings page for this skill.
