@@ -6,6 +6,6 @@ before_install:
 python:
   - "3.6"
 script:
- - pep8 __init__.py
+ - pep8 --max-line-length=100 __init__.py
 after_success:
   coveralls
