@@ -74,6 +74,7 @@ class YelpRestaurant(MycroftSkill):
                           "is_closed": restaurant_open})
 
     @intent_handler(IntentBuilder("")
+                    .require('RestaurantName')
                     .require("NextResult"))
     def handle_next_result(self, message):
         self.index += 1
@@ -81,6 +82,7 @@ class YelpRestaurant(MycroftSkill):
         if int(self.index) <= 4:
             businesses = json_response['businesses'][self.index]
             restaurant_name = businesses['name']
+            self.set_context('RestaurantName', restaurant_name)
             restaurant_phone = businesses['phone']
             restaurant_location = businesses['location']['display_address'][0] + \
                 " " + \
@@ -99,6 +101,7 @@ class YelpRestaurant(MycroftSkill):
                 json_response = self.json_response
                 businesses = json_response['businesses'][self.index]
                 restaurant_name = businesses['name']
+                self.set_context('RestaurantName', restaurant_name)
                 restaurant_phone = businesses['phone']
                 restaurant_location = businesses['location']['display_address'][0] + \
                     " " + \
@@ -112,6 +115,7 @@ class YelpRestaurant(MycroftSkill):
                     "rating": businesses['rating']})
             if response == 'no':
                 self.speak("Ok, thanks for using the yelp restaurant finder.")
+                self.remove_context('RestaurantName')
 
 
 # The "create_skill()" method is used to create an instance of the skill.
