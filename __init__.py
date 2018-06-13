@@ -57,8 +57,6 @@ class YelpRestaurant(MycroftSkill):
                     .require('MoreInformation'))
     def handle_more_info(self, message):
         json_response = self.json_response
-        print(int(self.index))
-        print(type(self.index))
         businesses = json_response['businesses'][self.index]
         restaurant_name = businesses['name']
         restaurant_phone = businesses['phone']
@@ -79,9 +77,7 @@ class YelpRestaurant(MycroftSkill):
                     .require("NextResult"))
     def handle_next_result(self, message):
         self.index += 1
-        print(self.index)
         json_response = self.json_response
-        print("This is the json response: {}".format(json_response))
         if int(self.index) <= 4:
             businesses = json_response['businesses'][self.index]
             restaurant_name = businesses['name']
