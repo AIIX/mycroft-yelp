@@ -44,6 +44,10 @@ Here is what from the Mycroft CLI the response looks like currently, plans to ha
 
 ![yelp screenshot](https://github.com/btotharye/mycroft-yelp/blob/master/yelp_ss.png)
 
+![kde_screenshot](https://github.com/btotharye/mycroft-yelp/blob/master/kde_ss.jpg)
+
+## Text Message Example
+![text_ss](https://github.com/btotharye/mycroft-yelp/blob/master/text_message.jpg)
 
 ## Credits 
 btotharye
