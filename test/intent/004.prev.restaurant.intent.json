@@ -1,0 +1,4 @@
+{
+  "utterance": "previous restaurant",
+  "expected_dialog": "prev.result"
+}

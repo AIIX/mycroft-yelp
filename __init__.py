@@ -111,7 +111,7 @@ class YelpRestaurant(MycroftSkill):
             businesses = json_response['businesses'][self.index]
             restaurant_name = businesses['name']
             self.set_context('RestaurantName', restaurant_name)
-            self.speak_dialog("next.result", data={
+            self.speak_dialog("prev.result", data={
                 "restaurant_name": restaurant_name,
                 "rating": businesses['rating']})
         else:
