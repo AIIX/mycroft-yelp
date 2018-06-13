@@ -4,3 +4,4 @@ yelp (?P<place>.*)
 yelp me (?P<place>.*)
 (?P<place>.*) near me
 (?P<place>.*) by me
+(?P<place>.*) nearby
