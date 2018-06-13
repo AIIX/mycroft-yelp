@@ -17,6 +17,12 @@
                       "type": "text",
                       "label": "zip code - optional if not supplied uses location from home setting",
                       "value": ""
+                  },
+                  {
+                      "name": "iftt_url",
+                      "type": "text",
+                      "label": "IFTTT Webhook URL",
+                      "value": "https://maker.ifttt.com/trigger/mycroft_yelp/with/key/iftt_webhook_key_here"
                   }
               ]
           },

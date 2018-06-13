@@ -2,7 +2,7 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill, intent_handler
 from mycroft.util.log import LOG
 from yelpapi import YelpAPI
-
+from requests import get
 
 class YelpRestaurant(MycroftSkill):
 
@@ -128,6 +128,27 @@ class YelpRestaurant(MycroftSkill):
             if response == 'no':
                 self.speak("Ok, thanks for using the yelp restaurant finder.")
                 self.remove_context('RestaurantName')
+
+    @intent_handler(IntentBuilder("")
+                    .require('RestaurantName')
+                    .require('SendInfo'))
+    def handle_send_info(self, message):
+        json_response = self.json_response
+        businesses = json_response['businesses'][self.index]
+        restaurant_name = businesses['name']
+        restaurant_url = businesses['url']
+        restaurant_rating = businesses['rating']
+        url = self.settings.get('iftt_url')
+        print(self.settings)
+        json_data = {"value1": restaurant_name, "value2": restaurant_rating, "value3": restaurant_url}
+        if url:
+            r = get(url, json_data)
+            if r.status_code == 200:
+                self.speak("Successfully sent you a notification with results.")
+            else:
+                self.speak("Had a issue sending text message")
+        else:
+            self.speak("It appears you are missing configuration for notifications")
 
 
 # The "create_skill()" method is used to create an instance of the skill.
