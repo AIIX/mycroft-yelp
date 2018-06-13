@@ -1,0 +1,6 @@
+place (for|to eat)? (?P<place>.*)
+restaurant (for|to eat)? (?P<place>.*)
+yelp (?P<place>.*)
+yelp me (?P<place>.*)
+(?P<place>.*) near me
+(?P<place>.*) by me

@@ -4,6 +4,7 @@ from mycroft.util.log import LOG
 from yelpapi import YelpAPI
 from requests import get
 
+
 class YelpRestaurant(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
@@ -18,21 +19,22 @@ class YelpRestaurant(MycroftSkill):
 
     # This handle is used to lookup a restaurant near the person's location
     @intent_handler(IntentBuilder("")
-                    .require("Restaurant")
-                    .require("food_type"))
+                    .require("YelpPlace")
+                    .require("place"))
     def handle_find_restaurant_intent(self, message):
         api_key = self.settings.get('key')
         zip_code = self.settings.get('zipcode')
         yelp_api = YelpAPI(api_key)
         location = self.location
-        food_type = message.data['food_type']
+        place = message.data['place']
         longitude = location['coordinate']['longitude']
         latitude = location['coordinate']['latitude']
-        search_results = yelp_api.search_query(term=food_type,
+        search_results = yelp_api.search_query(term=place,
                                                latitude=latitude,
                                                longitude=longitude,
                                                limit='5',
                                                sort_by='best_match')
+        print(search_results)
         businesses = search_results['businesses'][self.index]
         restaurant_name = businesses['name']
         restaurant_phone = businesses['display_phone']
@@ -41,6 +43,7 @@ class YelpRestaurant(MycroftSkill):
             " " + \
             businesses['location']['display_address'][1]
         restaurant_open = businesses['is_closed']
+        restaurant_url = businesses['url']
         self.json_response = search_results
         self.set_context('RestaurantName', restaurant_name)
         self.restaurant_phone = restaurant_phone
@@ -49,8 +52,8 @@ class YelpRestaurant(MycroftSkill):
         self.is_closed = restaurant_open
         rating = businesses['rating']
         self.speak_dialog("restaurant", data={
-                          "restaurant_name": restaurant_name,
-                          "rating": rating})
+                      "restaurant_name": restaurant_name,
+                      "rating": rating})
 
     @intent_handler(IntentBuilder("")
                     .require('RestaurantName')

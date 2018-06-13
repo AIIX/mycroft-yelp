@@ -1,2 +1,0 @@
-place (for|to eat)? (?P<food_type>.*)
-restaurant (for|to eat)? (?P<food_type>.*)
