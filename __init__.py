@@ -35,7 +35,7 @@ class YelpRestaurant(MycroftSkill):
                                                sort_by='best_match')
         businesses = search_results['businesses'][self.index]
         restaurant_name = businesses['name']
-        restaurant_phone = businesses['phone']
+        restaurant_phone = businesses['display_phone']
         restaurant_rating = businesses['rating']
         restaurant_location = businesses['location']['display_address'][0] + \
             " " + \
@@ -59,7 +59,7 @@ class YelpRestaurant(MycroftSkill):
         json_response = self.json_response
         businesses = json_response['businesses'][self.index]
         restaurant_name = businesses['name']
-        restaurant_phone = businesses['phone']
+        restaurant_phone = businesses['display_phone']
         restaurant_location = businesses['location']['display_address'][0] + \
             " " + \
             businesses['location']['display_address'][1]
@@ -83,14 +83,6 @@ class YelpRestaurant(MycroftSkill):
             businesses = json_response['businesses'][self.index]
             restaurant_name = businesses['name']
             self.set_context('RestaurantName', restaurant_name)
-            restaurant_phone = businesses['phone']
-            restaurant_location = businesses['location']['display_address'][0] + \
-                " " + \
-                businesses['location']['display_address'][1]
-            if businesses['is_closed'] is True:
-                restaurant_open = 'closed'
-            else:
-                restaurant_open = 'open'
             self.speak_dialog("next.result", data={
                 "restaurant_name": restaurant_name,
                 "rating": businesses['rating']})
@@ -102,14 +94,34 @@ class YelpRestaurant(MycroftSkill):
                 businesses = json_response['businesses'][self.index]
                 restaurant_name = businesses['name']
                 self.set_context('RestaurantName', restaurant_name)
-                restaurant_phone = businesses['phone']
-                restaurant_location = businesses['location']['display_address'][0] + \
-                    " " + \
-                    businesses['location']['display_address'][1]
-                if businesses['is_closed'] is True:
-                    restaurant_open = 'closed'
-                else:
-                    restaurant_open = 'open'
+                self.speak_dialog("restaurant", data={
+                    "restaurant_name": restaurant_name,
+                    "rating": businesses['rating']})
+            if response == 'no':
+                self.speak("Ok, thanks for using the yelp restaurant finder.")
+                self.remove_context('RestaurantName')
+
+    @intent_handler(IntentBuilder("")
+                    .require('RestaurantName')
+                    .require("PrevResult"))
+    def handle_prev_result(self, message):
+        self.index -= 1
+        json_response = self.json_response
+        if self.index <= 4 and self.index != -1:
+            businesses = json_response['businesses'][self.index]
+            restaurant_name = businesses['name']
+            self.set_context('RestaurantName', restaurant_name)
+            self.speak_dialog("next.result", data={
+                "restaurant_name": restaurant_name,
+                "rating": businesses['rating']})
+        else:
+            response = self.get_response('startover')
+            if response == 'yes':
+                self.index = 0
+                json_response = self.json_response
+                businesses = json_response['businesses'][self.index]
+                restaurant_name = businesses['name']
+                self.set_context('RestaurantName', restaurant_name)
                 self.speak_dialog("restaurant", data={
                     "restaurant_name": restaurant_name,
                     "rating": businesses['rating']})

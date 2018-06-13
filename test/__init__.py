@@ -142,7 +142,7 @@ def test_runner(skill, example, emitter, loader):
     with patch(s[0].__module__ + '.YelpAPI.search_query') as m:
         s[0].is_closed = json_response['businesses'][0]['is_closed']
         s[0].rating = json_response['businesses'][0]['rating']
-        s[0].restaurant_phone = json_response['businesses'][0]['phone']
+        s[0].restaurant_phone = json_response['businesses'][0]['display_phone']
         s[0].restaurant_address = json_response['businesses'][0]['location']['display_address'][0] + \
             " " + \
             json_response['businesses'][0]['location']['display_address'][1]
