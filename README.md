@@ -17,6 +17,7 @@ Finds restaurants/bars/and other locations via the Yelp API
 * "next restaurant" - Will go to next result and you can then ask for more information for the address and such 
 * "next result" - Will go to next result and you can then ask for more information for the address and such
 * "previous restaurant" - Will go to the previous result
+* "previous result" - Will go to the previous result
 * "send info" - sends text message of restaurant name, rating, and yelp url
 * "send information" - sends text message of restaurant name, rating, and yelp url
 * "send it to me" - sends text message of restaurant name, rating, and yelp url
