@@ -48,7 +48,11 @@ Follow [This](https://ifttt.com/create) link to setup a Webhook.  You will want 
 ## Screenshot Example
 Here is what from the Mycroft CLI the response looks like currently, plans to have this come with all the info including the address and such as a text message using IFTTT webhooks.
 
+Yelp Example:
+
 ![yelp screenshot](https://github.com/btotharye/mycroft-yelp/blob/master/yelp_ss.png)
+
+Plasmoid Desktop Example:
 
 ![kde_screenshot](https://github.com/btotharye/mycroft-yelp/blob/master/kde_ss.jpg)
 
