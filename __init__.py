@@ -23,7 +23,7 @@ class YelpRestaurant(MycroftSkill):
                     .require("YelpPlace")
                     .require("place"))
     def handle_find_restaurant_intent(self, message):
-        api_key = 'y5LUVuRFU-D-nPfpbxCpR6w6kmzYmVf6y8Xd56uIrdOaDjzk3gdRCv6IvN1zmHxoYN2F9hLRQfBijK5M821DMfs6p6UwpkI5dyG3AOXMp_MfDNs2M1HD4XOL1hAiW3Yx' #self.settings.get('key')
+        api_key = self.settings.get('key')
         zip_code = self.settings.get('zipcode')
         yelp_api = YelpAPI(api_key)
         location = self.location
