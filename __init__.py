@@ -3,6 +3,7 @@ from mycroft.skills.core import MycroftSkill, intent_handler
 from mycroft.util.log import LOG
 from yelpapi import YelpAPI
 from requests import get
+from mycroft.messagebus.message import Message
 
 
 class YelpRestaurant(MycroftSkill):
@@ -22,7 +23,7 @@ class YelpRestaurant(MycroftSkill):
                     .require("YelpPlace")
                     .require("place"))
     def handle_find_restaurant_intent(self, message):
-        api_key = self.settings.get('key')
+        api_key = 'y5LUVuRFU-D-nPfpbxCpR6w6kmzYmVf6y8Xd56uIrdOaDjzk3gdRCv6IvN1zmHxoYN2F9hLRQfBijK5M821DMfs6p6UwpkI5dyG3AOXMp_MfDNs2M1HD4XOL1hAiW3Yx' #self.settings.get('key')
         zip_code = self.settings.get('zipcode')
         yelp_api = YelpAPI(api_key)
         location = self.location
@@ -44,6 +45,7 @@ class YelpRestaurant(MycroftSkill):
             businesses['location']['display_address'][1]
         restaurant_open = businesses['is_closed']
         restaurant_url = businesses['url']
+        restaurant_imageurl = businesses['image_url']
         self.json_response = search_results
         self.set_context('RestaurantName', restaurant_name)
         self.restaurant_phone = restaurant_phone
@@ -54,7 +56,9 @@ class YelpRestaurant(MycroftSkill):
         self.speak_dialog("restaurant", data={
                       "restaurant_name": restaurant_name,
                       "rating": rating})
-
+        self.enclosure.ws.emit(Message("yelpObject", {'desktop': {'data': {'restaurant': restaurant_name, 'phone': restaurant_phone, 'location': restaurant_location, 'status': restaurant_open, 'url': restaurant_url, 'image_url': restaurant_imageurl, 'rating': restaurant_rating}}}));
+        
+        
     @intent_handler(IntentBuilder("")
                     .require('RestaurantName')
                     .require('MoreInformation'))
