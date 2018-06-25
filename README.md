@@ -1,4 +1,6 @@
 # Mycroft Yelp Finder [![Build Status](https://travis-ci.org/btotharye/mycroft-yelp.svg?branch=master)](https://travis-ci.org/btotharye/mycroft-yelp) [![codecov](https://codecov.io/gh/btotharye/mycroft-yelp/branch/master/graph/badge.svg)](https://codecov.io/gh/btotharye/mycroft-yelp)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/btotharye)
+
 Finds restaurants/bars/and other locations via the Yelp API
 
 ## Description 
