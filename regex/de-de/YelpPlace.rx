@@ -1,0 +1,7 @@
+Platz (zum|für)? (?P<place>.*)
+restaurant (zum|für)? (?P<place>.*)
+yelp (?P<place>.*)
+yelp mir (?P<place>.*)
+(?P<place>.*) in der nähe
+(?P<place>.*) bei mir
+(?P<place>.*) hunger
