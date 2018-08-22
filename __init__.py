@@ -56,7 +56,7 @@ class YelpRestaurant(MycroftSkill):
         self.speak_dialog("restaurant", data={
             "restaurant_name": restaurant_name,
             "rating": rating})
-        self.enclosure.ws.emit(
+        self.enclosure.bus.emit(
             Message(
                 "yelpObject",
                 {
@@ -115,7 +115,7 @@ class YelpRestaurant(MycroftSkill):
             self.speak_dialog("next.result", data={
                 "restaurant_name": restaurant_name,
                 "rating": businesses['rating']})
-            self.enclosure.ws.emit(
+            self.enclosure.bus.emit(
                 Message(
                     "yelpObject",
                     {
@@ -167,7 +167,7 @@ class YelpRestaurant(MycroftSkill):
             self.speak_dialog("prev.result", data={
                 "restaurant_name": restaurant_name,
                 "rating": businesses['rating']})
-            self.enclosure.ws.emit(
+            self.enclosure.bus.emit(
                 Message(
                     "yelpObject",
                     {
@@ -202,7 +202,7 @@ class YelpRestaurant(MycroftSkill):
                 self.speak_dialog("restaurant", data={
                     "restaurant_name": restaurant_name,
                     "rating": businesses['rating']})
-                self.enclosure.ws.emit(
+                self.enclosure.bus.emit(
                     Message(
                         "yelpObject",
                         {
