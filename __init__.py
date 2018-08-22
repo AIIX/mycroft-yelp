@@ -54,11 +54,22 @@ class YelpRestaurant(MycroftSkill):
         self.is_closed = restaurant_open
         rating = businesses['rating']
         self.speak_dialog("restaurant", data={
-                      "restaurant_name": restaurant_name,
-                      "rating": rating})
-        self.enclosure.ws.emit(Message("yelpObject", {'desktop': {'data': {'restaurant': restaurant_name, 'phone': restaurant_phone, 'location': restaurant_location, 'status': restaurant_open, 'url': restaurant_url, 'image_url': restaurant_imageurl, 'rating': restaurant_rating}}}));
-        
-        
+            "restaurant_name": restaurant_name,
+            "rating": rating})
+        self.enclosure.ws.emit(
+            Message(
+                "yelpObject",
+                {
+                    'desktop': {
+                        'data': {
+                            'restaurant': restaurant_name,
+                            'phone': restaurant_phone,
+                            'location': restaurant_location,
+                            'status': restaurant_open,
+                            'url': restaurant_url,
+                            'image_url': restaurant_imageurl,
+                            'rating': restaurant_rating}}}))
+
     @intent_handler(IntentBuilder("")
                     .require('RestaurantName')
                     .require('MoreInformation'))
@@ -89,10 +100,34 @@ class YelpRestaurant(MycroftSkill):
         if int(self.index) <= 4:
             businesses = json_response['businesses'][self.index]
             restaurant_name = businesses['name']
+            restaurant_rating = businesses['rating']
+            restaurant_url = businesses['url']
+            restaurant_imageurl = businesses['image_url']
+            restaurant_phone = businesses['display_phone']
+            restaurant_location = businesses['location']['display_address'][0] + \
+                " " + \
+                businesses['location']['display_address'][1]
+            if businesses['is_closed'] is True:
+                restaurant_open = 'closed'
+            else:
+                restaurant_open = 'open'
             self.set_context('RestaurantName', restaurant_name)
             self.speak_dialog("next.result", data={
                 "restaurant_name": restaurant_name,
                 "rating": businesses['rating']})
+            self.enclosure.ws.emit(
+                Message(
+                    "yelpObject",
+                    {
+                        'desktop': {
+                            'data': {
+                                'restaurant': restaurant_name,
+                                'phone': restaurant_phone,
+                                'location': restaurant_location,
+                                'status': restaurant_open,
+                                'url': restaurant_url,
+                                'image_url': restaurant_imageurl,
+                                'rating': restaurant_rating}}}))
         else:
             response = self.get_response('startover')
             if response == 'yes':
@@ -117,10 +152,34 @@ class YelpRestaurant(MycroftSkill):
         if self.index <= 4 and self.index != -1:
             businesses = json_response['businesses'][self.index]
             restaurant_name = businesses['name']
+            restaurant_rating = businesses['rating']
+            restaurant_url = businesses['url']
+            restaurant_imageurl = businesses['image_url']
+            restaurant_phone = businesses['display_phone']
+            restaurant_location = businesses['location']['display_address'][0] + \
+                                  " " + \
+                                  businesses['location']['display_address'][1]
+            if businesses['is_closed'] is True:
+                restaurant_open = 'closed'
+            else:
+                restaurant_open = 'open'
             self.set_context('RestaurantName', restaurant_name)
             self.speak_dialog("prev.result", data={
                 "restaurant_name": restaurant_name,
                 "rating": businesses['rating']})
+            self.enclosure.ws.emit(
+                Message(
+                    "yelpObject",
+                    {
+                        'desktop': {
+                            'data': {
+                                'restaurant': restaurant_name,
+                                'phone': restaurant_phone,
+                                'location': restaurant_location,
+                                'status': restaurant_open,
+                                'url': restaurant_url,
+                                'image_url': restaurant_imageurl,
+                                'rating': restaurant_rating}}}))
         else:
             response = self.get_response('startover')
             if response == 'yes':
@@ -128,10 +187,34 @@ class YelpRestaurant(MycroftSkill):
                 json_response = self.json_response
                 businesses = json_response['businesses'][self.index]
                 restaurant_name = businesses['name']
+                restaurant_rating = businesses['rating']
+                restaurant_url = businesses['url']
+                restaurant_imageurl = businesses['image_url']
+                restaurant_phone = businesses['display_phone']
+                restaurant_location = businesses['location']['display_address'][0] + \
+                                      " " + \
+                                      businesses['location']['display_address'][1]
+                if businesses['is_closed'] is True:
+                    restaurant_open = 'closed'
+                else:
+                    restaurant_open = 'open'
                 self.set_context('RestaurantName', restaurant_name)
                 self.speak_dialog("restaurant", data={
                     "restaurant_name": restaurant_name,
                     "rating": businesses['rating']})
+                self.enclosure.ws.emit(
+                    Message(
+                        "yelpObject",
+                        {
+                            'desktop': {
+                                'data': {
+                                    'restaurant': restaurant_name,
+                                    'phone': restaurant_phone,
+                                    'location': restaurant_location,
+                                    'status': restaurant_open,
+                                    'url': restaurant_url,
+                                    'image_url': restaurant_imageurl,
+                                    'rating': restaurant_rating}}}))
             if response == 'no':
                 self.speak("Ok, thanks for using the yelp restaurant finder.")
                 self.remove_context('RestaurantName')
@@ -147,15 +230,20 @@ class YelpRestaurant(MycroftSkill):
         restaurant_rating = businesses['rating']
         url = self.settings.get('iftt_url')
         print(self.settings)
-        json_data = {"value1": restaurant_name, "value2": restaurant_rating, "value3": restaurant_url}
+        json_data = {
+            "value1": restaurant_name,
+            "value2": restaurant_rating,
+            "value3": restaurant_url}
         if url:
             r = get(url, json_data)
             if r.status_code == 200:
-                self.speak("Successfully sent you a notification with results.")
+                self.speak(
+                    "Successfully sent you a notification with results.")
             else:
                 self.speak("Had a issue sending text message")
         else:
-            self.speak("It appears you are missing configuration for notifications")
+            self.speak(
+                "It appears you are missing configuration for notifications")
 
 
 # The "create_skill()" method is used to create an instance of the skill.

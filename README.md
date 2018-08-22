@@ -1,4 +1,6 @@
-# Yelp Restaurant Finder [![Build Status](https://travis-ci.org/btotharye/mycroft-yelp.svg?branch=master)](https://travis-ci.org/btotharye/mycroft-yelp) [![codecov](https://codecov.io/gh/btotharye/mycroft-yelp/branch/master/graph/badge.svg)](https://codecov.io/gh/btotharye/mycroft-yelp)
+# Mycroft Yelp Finder [![Build Status](https://travis-ci.org/btotharye/mycroft-yelp.svg?branch=master)](https://travis-ci.org/btotharye/mycroft-yelp) [![codecov](https://codecov.io/gh/btotharye/mycroft-yelp/branch/master/graph/badge.svg)](https://codecov.io/gh/btotharye/mycroft-yelp)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/btotharye)
+
 Finds restaurants/bars/and other locations via the Yelp API
 
 ## Description 
@@ -48,7 +50,11 @@ Follow [This](https://ifttt.com/create) link to setup a Webhook.  You will want 
 ## Screenshot Example
 Here is what from the Mycroft CLI the response looks like currently, plans to have this come with all the info including the address and such as a text message using IFTTT webhooks.
 
+Yelp Example:
+
 ![yelp screenshot](https://github.com/btotharye/mycroft-yelp/blob/master/yelp_ss.png)
+
+Plasmoid Desktop Example:
 
 ![kde_screenshot](https://github.com/btotharye/mycroft-yelp/blob/master/kde_ss.jpg)
 
