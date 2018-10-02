@@ -1,4 +1,4 @@
-# Mycroft Yelp Finder 
+# Yelp Skill - Fork of btotharye Mycroft Yelp Skill
 Finds restaurants/bars/and other locations via the Yelp API
 
 ## Description 
