@@ -10,19 +10,13 @@
                       "name": "key",
                       "type": "text",
                       "label": "Yelp API Key",
-                      "value": ""
+                      "value": "eTVMVVZ1UkZVLUQtblBmcGJ4Q3BSNnc2a216WW1WZjZ5OFhkNTZ1SXJkT2FEanprM2dkUkN2Nkl2TjF6bUh4b1lOMkY5aExSUWZCaWpLNU04MjFETWZzNnA2VXdwa0k1ZHlHM0FPWE1wX01mRE5zMk0xSEQ0WE9MMWhBaVczWXg="
                   },
                   {
                       "name": "zipcode",
                       "type": "text",
                       "label": "zip code - optional if not supplied uses location from home setting",
                       "value": ""
-                  },
-                  {
-                      "name": "iftt_url",
-                      "type": "text",
-                      "label": "IFTTT Webhook URL",
-                      "value": "https://maker.ifttt.com/trigger/mycroft_yelp/with/key/iftt_webhook_key_here"
                   }
               ]
           },
